@@ -11,10 +11,7 @@ class myImg{
         this.imgNode.src = src;
     }
 }
-/* 
-封装一个类嗲用前一个类，等待网络图片加载完成之前先设置一张loading菊花图，
-加载完成后将图片换成该显示的图片 
-*/
+/* 封装一个类嗲用前一个类，等待网络图片加载完成之前先设置一张loading菊花图，加载完成后将图片换成该显示的图片 */
 class PreloadImg extends myImg{
     img = new Image;
     constructor( where: HTMLElement){

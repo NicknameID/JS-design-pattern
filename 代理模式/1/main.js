@@ -27,14 +27,14 @@ var myImg = /** @class */ (function () {
 封装一个类嗲用前一个类，等待网络图片加载完成之前先设置一张loading菊花图，
 加载完成后将图片换成该显示的图片
 */
-var ProxImg = /** @class */ (function (_super) {
-    __extends(ProxImg, _super);
-    function ProxImg(where) {
+var PreloadImg = /** @class */ (function (_super) {
+    __extends(PreloadImg, _super);
+    function PreloadImg(where) {
         var _this = _super.call(this, where) || this;
         _this.img = new Image;
         return _this;
     }
-    ProxImg.prototype.setSrc = function (src) {
+    PreloadImg.prototype.setSrc = function (src) {
         var _this = this;
         _super.prototype.setSrc.call(this, 'loading.gif');
         this.img.src = src;
@@ -42,18 +42,20 @@ var ProxImg = /** @class */ (function (_super) {
             _super.prototype.setSrc.call(_this, src);
         };
     };
-    return ProxImg;
+    return PreloadImg;
 }(myImg));
 /*循环调用前一个类，插入图片的显示列表*/
-var LoadImgList = /** @class */ (function () {
+var LoadImgList = /** @class */ (function (_super) {
+    __extends(LoadImgList, _super);
     function LoadImgList(list, place) {
+        var _this = _super.call(this, place) || this;
         list.map(function (item) {
-            var img_1 = new ProxImg(place);
-            img_1.setSrc(item);
+            _super.prototype.setSrc.call(_this, item);
         });
+        return _this;
     }
     return LoadImgList;
-}());
+}(PreloadImg));
 /*  Test  */
 var place = document.getElementsByTagName('div')[0];
 var list = [
