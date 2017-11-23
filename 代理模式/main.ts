@@ -15,7 +15,7 @@ class myImg{
 封装一个类嗲用前一个类，等待网络图片加载完成之前先设置一张loading菊花图，
 加载完成后将图片换成该显示的图片 
 */
-class ProxImg extends myImg{
+class PreloadImg extends myImg{
     img = new Image;
     constructor( where: HTMLElement){
         super(where);
@@ -30,11 +30,11 @@ class ProxImg extends myImg{
 }
 
 /*循环调用前一个类，插入图片的显示列表*/
-class LoadImgList{
+class LoadImgList extends PreloadImg{
     constructor(list:string[],place:HTMLElement){
+        super(place);
         list.map((item)=>{
-            let img_1 = new ProxImg(place);
-            img_1.setSrc(item);            
+            super.setSrc(item);            
         })
     }
 }
