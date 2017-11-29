@@ -14,7 +14,7 @@ class EventPool{
             }
         });
     }
-    dispatch(eventName: string, callbackParms: any[]=[], scope = this.clientList){
+    dispatch(eventName: string, callbackParms: any[]=[], scope=this.clientList){
         let events: string[] = eventName.split(" ").filter((item) => item !== "" ? true : false);
         let callbacks:Function[]=[];
         events.map((item)=>{
