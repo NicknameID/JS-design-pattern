@@ -74,5 +74,6 @@ class WeakState implements ButtonState_interface{
 
 
 let place = document.querySelector('div');
-let LightBtn = new Button([OffState]);
+// let LightBtn = new Button([OffState]);
+let LightBtn = new Button([OffState, StrongState, WeakState]);
 LightBtn.appendTo( place );
